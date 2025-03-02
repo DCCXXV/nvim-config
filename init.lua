@@ -15,7 +15,12 @@ require("pam").manage({
             vim.cmd("TSUpdate")
         end,
         config = function()
-            require("nvim-treesitter.configs").setup()
+            require("nvim-treesitter.configs").setup({
+            ensure_installed = { "go" },
+            highlight = {
+                enable = true,
+            },
+        })
         end
     },
     {
@@ -61,7 +66,7 @@ require("pam").manage({
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = { "pyright", "gopls", "lua_ls", "clangd" }
+                ensure_installed = { "pyright", "gopls", "lua_ls", "clangd", "bashls" }
             })
 
             local nvim_lsp = require("lspconfig")
@@ -74,6 +79,7 @@ require("pam").manage({
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+            nvim_lsp.bashls.setup({ on_attach = on_attach })
             nvim_lsp.pyright.setup({ on_attach = on_attach })
             nvim_lsp.gopls.setup({ on_attach = on_attach })
             nvim_lsp.lua_ls.setup({ on_attach = on_attach })

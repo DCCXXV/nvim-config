@@ -1,4 +1,4 @@
-function zen_mode ()
+function ZenMode ()
     -- center code
     vim.cmd("Centerpad")
 

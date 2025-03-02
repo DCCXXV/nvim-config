@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>tt", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>fj", vim.cmd.Ex)
 
 -- telescope
 local builtin = require('telescope.builtin')
@@ -12,5 +12,4 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 vim.keymap.set("n", "<leader>ap", vim.cmd.AdocPdfLiveOpen)
 
 -- centerpad
-
-vim.keymap.set("n", "<leader>ee", zen_mode)
+vim.keymap.set("n", "<leader>tt", ZenMode);
